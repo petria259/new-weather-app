@@ -1,0 +1,64 @@
+a {
+  color: #26415b;
+}
+
+a:hover {
+  color: #26415b;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Comfortaa", cursive;
+  color: #26415b;
+}
+
+footer {
+  font-size: 12px;
+  text-align: right;
+}
+
+.card {
+  border: none;
+}
+
+.card-body {
+  background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);
+  max-width: 700px;
+}
+
+#main-unit {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+#condition {
+  font-size: 20px;
+}
+
+#current-location {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.date {
+  text-align: left;
+}
+
+.main-icon {
+  width: 130px;
+}
+
+#main-temperature {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.small-icons {
+  margin-bottom: 15px;
+  width: 50px;
+}
+
+.subheader {
+  margin-top: 20px;
+}

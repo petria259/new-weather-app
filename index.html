@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/fe61601695.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>WeatherApp</title>
+  </head>
+  <body>
+    <div class="component">
+      <div class="card">
+        <div class="card-body">
+          <form id="search-form">
+            <div class="row">
+              <div class="col-5">
+                <input
+                  type="text"
+                  placeholder="Location..."
+                  autocomplete="off"
+                  class="form-control"
+                  id="location-input"
+                />
+              </div>
+              <div class="col-1">
+                <button type="submit" class="btn btn-light">Go</button>
+              </div>
+              <div class="col-2">
+                <button type="button" class="btn btn-light" id="current-location-button">🌍</button>
+              </div>
+              <div class="col-4 date">
+                <p id="date-and-time"></p>
+              </div>
+            </div>
+          </form>
+          <br />
+          <div class="row header">
+            <div class="col">
+              <img class="main-icon" src="media/sun.png" alt="sun-icon" />
+            </div>
+            <div class="col">
+              <div id="current-location">Toronto</div>
+              <span id="main-temperature">27</span>  <span id="units"><span id="main-unit">°C</span> / <a href="#" id="convert-link">°F</a></span>
+              <div id="condition">Mostly sunny</div>
+            </div>
+            <div class="col">
+              <p>
+                <div id="wind-speed">
+                Wind: 10 mph
+                </div>
+                <div id="humidity">
+                Humidity: 81%
+                </div>
+              </p>
+            </div>
+          </div>
+          <br />
+          <div class="row subheader">
+            <div class="col">
+              <img
+                class="small-icons"
+                src="media/cloudy.png"
+                alt="cloud-icon"
+              />
+              <h5>Mon</h5>
+              <p>23°C - 73°F</p>
+            </div>
+            <div class="col">
+              <img class="small-icons" src="media/sun.png" alt="sun-icon" />
+              <h5>Tue</h5>
+              <p>28°C - 82°F</p>
+            </div>
+            <div class="col">
+              <img class="small-icons" src="media/storm.png" alt="storm-icon" />
+              <h5>Wed</h5>
+              <p>20°C - 68°F</p>
+            </div>
+            <div class="col">
+              <img class="small-icons" src="media/rain.png" alt="rain-icon" />
+              <h5>Thu</h5>
+              <p>18°C - 64°F</p>
+            </div>
+            <div class="col">
+              <img class="small-icons" src="media/rainy.png" alt="rainy-icon" />
+              <h5>Fri</h5>
+              <p>23°C - 73°F</p>
+            </div>
+          </div>
+          <br />
+          <footer>
+            <div>
+              Coded by Anita. Icons made by
+              <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+                >Freepik</a
+              >
+              from
+              <a href="https://www.flaticon.com/" title="Flaticon"
+                >www.flaticon.com</a
+              >
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>
