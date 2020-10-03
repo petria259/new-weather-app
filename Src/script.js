@@ -1,7 +1,8 @@
 function searchDefaultLocation(response) {
   let apiKey = "ad7d1124d3ea1fdc032f2be9660dcda0";
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Edinburgh&appid=${apiKey}&units=${units}`;
+  let city = "Edinburgh";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showDefaultLocation);
 }
 
@@ -51,7 +52,13 @@ function showDefaultDate(timestamp) {
   let date = now.getDate();
   let year = now.getFullYear();
   let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
   let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   let currentDate = document.querySelector("#date-and-time");
   currentDate.innerHTML = `${day}, ${date} ${month}, ${year} <br> ${hours}:${minutes}`;
 }
