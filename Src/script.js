@@ -12,9 +12,16 @@ function showDefaultLocation(response) {
   console.log(response);
   let location = response.data.name;
   let country = response.data.sys.country;
+  let latitude = response.data.coord.lat;
+  let longitude = response.data.coord.lon;
   let currentLocation = document.querySelector("#current-location");
   currentLocation.innerHTML = `${location}, ${country}`;
   showWeather(response);
+
+  let apiKey = "ad7d1124d3ea1fdc032f2be9660dcda0";
+  let units = "metric";
+  let apiForecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  axios.get(apiForecastUrl).then(showForecast);
 }
 
 //display weather
@@ -94,9 +101,16 @@ function searchLocation(response) {
 function showLocation(response) {
   let inputLocation = response.data.name;
   let inputCountry = response.data.sys.country;
+  let inputLatitude = response.data.coord.lat;
+  let inputLongitude = response.data.coord.lon;
   let currentLocation = document.querySelector("#current-location");
   currentLocation.innerHTML = `${inputLocation}, ${inputCountry}`;
   showWeather(response);
+
+  let apiKey = "ad7d1124d3ea1fdc032f2be9660dcda0";
+  let units = "metric";
+  let apiForecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${inputLatitude}&lon=${inputLongitude}&appid=${apiKey}&units=${units}`;
+  axios.get(apiForecastUrl).then(showForecast);
 }
 
 //geolocation
@@ -128,6 +142,7 @@ function showForecast(response) {
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
     response.data.daily[1].weather[0].icon
   }@2x.png" alt="small-icon"/>
+  <p>${response.data.daily[1].weather[0].main}</p>
   <p>${Math.round(response.data.daily[1].temp.max)}-${Math.round(
     response.data.daily[1].temp.min
   )}°C</p>
@@ -137,6 +152,7 @@ function showForecast(response) {
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
     response.data.daily[2].weather[0].icon
   }@2x.png" alt="small-icon"/>
+  <p>${response.data.daily[2].weather[0].main}</p>
   <p>${Math.round(response.data.daily[2].temp.max)}-${Math.round(
     response.data.daily[2].temp.min
   )}°C</p>
@@ -146,6 +162,7 @@ function showForecast(response) {
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
     response.data.daily[3].weather[0].icon
   }@2x.png" alt="small-icon"/>
+  <p>${response.data.daily[3].weather[0].main}</p>
   <p>${Math.round(response.data.daily[3].temp.max)}-${Math.round(
     response.data.daily[3].temp.min
   )}°C</p>
@@ -155,6 +172,7 @@ function showForecast(response) {
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
     response.data.daily[4].weather[0].icon
   }@2x.png" alt="small-icon"/>
+  <p>${response.data.daily[4].weather[0].main}</p>
   <p>${Math.round(response.data.daily[4].temp.max)}-${Math.round(
     response.data.daily[4].temp.min
   )}°C</p>
@@ -164,6 +182,7 @@ function showForecast(response) {
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
     response.data.daily[5].weather[0].icon
   }@2x.png" alt="small-icon"/>
+  <p>${response.data.daily[5].weather[0].main}</p>
   <p>${Math.round(response.data.daily[5].temp.max)}-${Math.round(
     response.data.daily[5].temp.min
   )}°C</p>
