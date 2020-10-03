@@ -135,7 +135,6 @@ function searchUserLocation(position) {
 //display forecast
 
 function showForecast(response) {
-  console.log(response);
   let forecastElement = document.querySelector("#forecast-row");
   forecastElement.innerHTML = `<div class="col">
   <h5>${new Date(response.data.daily[1].dt * 1000).toString().slice(0, 4)}</h5>
@@ -147,6 +146,7 @@ function showForecast(response) {
     response.data.daily[1].temp.min
   )}°C</p>
   </div>
+
   <div class="col">
   <h5>${new Date(response.data.daily[2].dt * 1000).toString().slice(0, 4)}</h5>
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
@@ -157,6 +157,7 @@ function showForecast(response) {
     response.data.daily[2].temp.min
   )}°C</p>
   </div>
+
   <div class="col">
   <h5>${new Date(response.data.daily[3].dt * 1000).toString().slice(0, 4)}</h5>
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
@@ -167,6 +168,7 @@ function showForecast(response) {
     response.data.daily[3].temp.min
   )}°C</p>
   </div>
+
   <div class="col">
   <h5>${new Date(response.data.daily[4].dt * 1000).toString().slice(0, 4)}</h5>
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
@@ -177,6 +179,7 @@ function showForecast(response) {
     response.data.daily[4].temp.min
   )}°C</p>
   </div>
+  
   <div class="col">
   <h5>${new Date(response.data.daily[5].dt * 1000).toString().slice(0, 4)}</h5>
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
