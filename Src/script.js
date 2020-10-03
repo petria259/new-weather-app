@@ -24,6 +24,36 @@ function formatDate() {
   return `${day}, ${date} ${month}, ${year} <br> ${hours}:${minutes}`;
 }
 
+function searchDefaultLocation(response) {
+  let apiKey = "ad7d1124d3ea1fdc032f2be9660dcda0";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Toronto&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showDefaultLocation);
+}
+
+function showDefaultLocation(response) {
+  let location = response.data.name;
+  let country = response.data.sys.country;
+  let currentLocation = document.querySelector("#current-location");
+  currentLocation.innerHTML = `${location}, ${country}`;
+  showDefaultWeather(response);
+}
+
+function showDefaultWeather(response) {
+  let temperature = Math.round(response.data.main.temp);
+  let condition = response.data.weather[0].description;
+  let windSpeed = response.data.wind.speed;
+  let humidity = response.data.main.humidity;
+  let temperatureElement = document.querySelector("#main-temperature");
+  temperatureElement.innerHTML = temperature;
+  let weatherElement = document.querySelector("#condition");
+  weatherElement.innerHTML = condition;
+  let windElement = document.querySelector("#wind-speed");
+  windElement.innerHTML = `Wind: ${windSpeed} mph`;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = `Humidity: ${humidity} %`;
+}
+
 function updateLocation(event) {
   event.preventDefault();
   let locationInput = document.querySelector("#location-input");
@@ -80,6 +110,9 @@ function convertTemperatureUnit(event) {
 
 let currentDate = document.querySelector("#date-and-time");
 currentDate.innerHTML = formatDate();
+
+let defaultLocation = document.querySelector("#current-location");
+defaultLocation.innerHTML = searchDefaultLocation();
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", updateLocation);
