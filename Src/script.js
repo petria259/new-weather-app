@@ -27,7 +27,7 @@ function formatDate() {
 function searchDefaultLocation(response) {
   let apiKey = "ad7d1124d3ea1fdc032f2be9660dcda0";
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Toronto&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Edinburgh&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showDefaultLocation);
 }
 
