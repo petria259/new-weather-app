@@ -133,6 +133,20 @@ function showDate(timestamp) {
   currentDate.innerHTML = `${day}, ${date} ${month}, ${year} <br> ${hours}:${minutes}`;
 }
 
+function getUserLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchUserLocation);
+}
+
+function searchUserLocation(position) {
+  let apiKey = "ad7d1124d3ea1fdc032f2be9660dcda0";
+  let units = "metric";
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showLocation);
+}
+
 function convertTemperatureUnit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#main-temperature");
@@ -156,6 +170,9 @@ defaultLocation.innerHTML = searchDefaultLocation();
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", updateLocation);
+
+let userLocationButton = document.querySelector("#user-location-button");
+userLocationButton.addEventListener("click", getUserLocation);
 
 let convertTemperatureLink = document.querySelector("#convert-link");
 convertTemperatureLink.addEventListener("click", convertTemperatureUnit);
