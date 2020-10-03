@@ -1,3 +1,5 @@
+//default location
+
 function searchDefaultLocation(response) {
   let apiKey = "ad7d1124d3ea1fdc032f2be9660dcda0";
   let units = "metric";
@@ -13,6 +15,8 @@ function showDefaultLocation(response) {
   currentLocation.innerHTML = `${location}, ${country}`;
   showWeather(response);
 }
+
+//display weather
 
 function showWeather(response) {
   let temperature = Math.round(response.data.main.temp);
@@ -35,6 +39,8 @@ function showWeather(response) {
   humidityElement.innerHTML = `Humidity: ${humidity} %`;
   showDate(response.data.dt * 1000);
 }
+
+//display date and time
 
 function showDate(timestamp) {
   let now = new Date(timestamp);
@@ -66,8 +72,10 @@ function showDate(timestamp) {
     minutes = `0${minutes}`;
   }
   let currentDate = document.querySelector("#date-and-time");
-  currentDate.innerHTML = `${day}, ${date} ${month}, ${year} <br> ${hours}:${minutes}`;
+  currentDate.innerHTML = `Last updated: <br> ${day}, ${date} ${month}, ${year} <br> ${hours}:${minutes}`;
 }
+
+//search new location
 
 function updateLocation(event) {
   event.preventDefault();
@@ -90,6 +98,8 @@ function showLocation(response) {
   showWeather(response);
 }
 
+//geolocation
+
 function getUserLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchUserLocation);
@@ -103,6 +113,8 @@ function searchUserLocation(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showLocation);
 }
+
+//convert temperature
 
 function convertTemperatureUnit(event) {
   event.preventDefault();
