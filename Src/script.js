@@ -9,6 +9,7 @@ function searchDefaultLocation(response) {
 }
 
 function showDefaultLocation(response) {
+  console.log(response);
   let location = response.data.name;
   let country = response.data.sys.country;
   let currentLocation = document.querySelector("#current-location");
@@ -44,7 +45,7 @@ function showWeather(response) {
 
 function showDate(timestamp) {
   let now = new Date(timestamp);
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[now.getDay()];
   let months = [
     "Jan",
@@ -112,6 +113,61 @@ function searchUserLocation(position) {
   let longitude = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showLocation);
+
+  let apiForecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  axios.get(apiForecastUrl).then(showForecast);
+}
+
+//display forecast
+
+function showForecast(response) {
+  console.log(response);
+  let forecastElement = document.querySelector("#forecast-row");
+  forecastElement.innerHTML = `<div class="col">
+  <h5>${new Date(response.data.daily[1].dt * 1000).toString().slice(0, 4)}</h5>
+  <img class="small-icons" src="http://openweathermap.org/img/wn/${
+    response.data.daily[1].weather[0].icon
+  }@2x.png" alt="small-icon"/>
+  <p>${Math.round(response.data.daily[1].temp.max)}-${Math.round(
+    response.data.daily[1].temp.min
+  )}°C</p>
+  </div>
+  <div class="col">
+  <h5>${new Date(response.data.daily[2].dt * 1000).toString().slice(0, 4)}</h5>
+  <img class="small-icons" src="http://openweathermap.org/img/wn/${
+    response.data.daily[2].weather[0].icon
+  }@2x.png" alt="small-icon"/>
+  <p>${Math.round(response.data.daily[2].temp.max)}-${Math.round(
+    response.data.daily[2].temp.min
+  )}°C</p>
+  </div>
+  <div class="col">
+  <h5>${new Date(response.data.daily[3].dt * 1000).toString().slice(0, 4)}</h5>
+  <img class="small-icons" src="http://openweathermap.org/img/wn/${
+    response.data.daily[3].weather[0].icon
+  }@2x.png" alt="small-icon"/>
+  <p>${Math.round(response.data.daily[3].temp.max)}-${Math.round(
+    response.data.daily[3].temp.min
+  )}°C</p>
+  </div>
+  <div class="col">
+  <h5>${new Date(response.data.daily[4].dt * 1000).toString().slice(0, 4)}</h5>
+  <img class="small-icons" src="http://openweathermap.org/img/wn/${
+    response.data.daily[4].weather[0].icon
+  }@2x.png" alt="small-icon"/>
+  <p>${Math.round(response.data.daily[4].temp.max)}-${Math.round(
+    response.data.daily[4].temp.min
+  )}°C</p>
+  </div>
+  <div class="col">
+  <h5>${new Date(response.data.daily[5].dt * 1000).toString().slice(0, 4)}</h5>
+  <img class="small-icons" src="http://openweathermap.org/img/wn/${
+    response.data.daily[5].weather[0].icon
+  }@2x.png" alt="small-icon"/>
+  <p>${Math.round(response.data.daily[5].temp.max)}-${Math.round(
+    response.data.daily[5].temp.min
+  )}°C</p>
+  </div>`;
 }
 
 //convert temperature
