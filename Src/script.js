@@ -1,29 +1,3 @@
-function formatDate() {
-  let now = new Date();
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  let day = days[now.getDay()];
-  let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  let month = months[now.getMonth()];
-  let date = now.getDate();
-  let year = now.getFullYear();
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
-  return `${day}, ${date} ${month}, ${year} <br> ${hours}:${minutes}`;
-}
-
 function searchDefaultLocation(response) {
   let apiKey = "ad7d1124d3ea1fdc032f2be9660dcda0";
   let units = "metric";
@@ -52,6 +26,34 @@ function showDefaultWeather(response) {
   windElement.innerHTML = `Wind: ${windSpeed} mph`;
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = `Humidity: ${humidity} %`;
+  showDefaultDate(response.data.dt * 1000);
+}
+
+function showDefaultDate(timestamp) {
+  let now = new Date(timestamp);
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let day = days[now.getDay()];
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let month = months[now.getMonth()];
+  let date = now.getDate();
+  let year = now.getFullYear();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let currentDate = document.querySelector("#date-and-time");
+  currentDate.innerHTML = `${day}, ${date} ${month}, ${year} <br> ${hours}:${minutes}`;
 }
 
 function updateLocation(event) {
@@ -88,6 +90,34 @@ function showWeather(response) {
   windElement.innerHTML = `Wind: ${windSpeed} mph`;
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = `Humidity: ${humidity} %`;
+  showDate(response.data.dt * 1000);
+}
+
+function showDate(timestamp) {
+  let now = new Date(timestamp);
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let day = days[now.getDay()];
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let month = months[now.getMonth()];
+  let date = now.getDate();
+  let year = now.getFullYear();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let currentDate = document.querySelector("#date-and-time");
+  currentDate.innerHTML = `${day}, ${date} ${month}, ${year} <br> ${hours}:${minutes}`;
 }
 
 function convertTemperatureUnit(event) {
@@ -107,9 +137,6 @@ function convertTemperatureUnit(event) {
     convertUnitElement.innerHTML = "°F";
   }
 }
-
-let currentDate = document.querySelector("#date-and-time");
-currentDate.innerHTML = formatDate();
 
 let defaultLocation = document.querySelector("#current-location");
 defaultLocation.innerHTML = searchDefaultLocation();
