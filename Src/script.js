@@ -11,82 +11,6 @@ function showDefaultLocation(response) {
   let country = response.data.sys.country;
   let currentLocation = document.querySelector("#current-location");
   currentLocation.innerHTML = `${location}, ${country}`;
-  showDefaultWeather(response);
-}
-
-function showDefaultWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let condition = response.data.weather[0].description;
-  let windSpeed = response.data.wind.speed;
-  let humidity = response.data.main.humidity;
-  let icon = response.data.weather[0].icon;
-  let iconElement = document.querySelector("#main-icon");
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${icon}@2x.png`
-  );
-  let temperatureElement = document.querySelector("#main-temperature");
-  temperatureElement.innerHTML = temperature;
-  let weatherElement = document.querySelector("#condition");
-  weatherElement.innerHTML = condition;
-  let windElement = document.querySelector("#wind-speed");
-  windElement.innerHTML = `Wind: ${windSpeed} mph`;
-  let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = `Humidity: ${humidity} %`;
-  showDefaultDate(response.data.dt * 1000);
-}
-
-function showDefaultDate(timestamp) {
-  let now = new Date(timestamp);
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  let day = days[now.getDay()];
-  let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  let month = months[now.getMonth()];
-  let date = now.getDate();
-  let year = now.getFullYear();
-  let hours = now.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  let minutes = now.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  let currentDate = document.querySelector("#date-and-time");
-  currentDate.innerHTML = `${day}, ${date} ${month}, ${year} <br> ${hours}:${minutes}`;
-}
-
-function updateLocation(event) {
-  event.preventDefault();
-  let locationInput = document.querySelector("#location-input");
-  searchLocation(locationInput.value);
-}
-
-function searchLocation(response) {
-  let apiKey = "ad7d1124d3ea1fdc032f2be9660dcda0";
-  let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${response}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(showLocation);
-}
-
-function showLocation(response) {
-  let inputLocation = response.data.name;
-  let inputCountry = response.data.sys.country;
-  let currentLocation = document.querySelector("#current-location");
-  currentLocation.innerHTML = `${inputLocation}, ${inputCountry}`;
   showWeather(response);
 }
 
@@ -143,6 +67,27 @@ function showDate(timestamp) {
   }
   let currentDate = document.querySelector("#date-and-time");
   currentDate.innerHTML = `${day}, ${date} ${month}, ${year} <br> ${hours}:${minutes}`;
+}
+
+function updateLocation(event) {
+  event.preventDefault();
+  let locationInput = document.querySelector("#location-input");
+  searchLocation(locationInput.value);
+}
+
+function searchLocation(response) {
+  let apiKey = "ad7d1124d3ea1fdc032f2be9660dcda0";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${response}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showLocation);
+}
+
+function showLocation(response) {
+  let inputLocation = response.data.name;
+  let inputCountry = response.data.sys.country;
+  let currentLocation = document.querySelector("#current-location");
+  currentLocation.innerHTML = `${inputLocation}, ${inputCountry}`;
+  showWeather(response);
 }
 
 function getUserLocation(event) {
