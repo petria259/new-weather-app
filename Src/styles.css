@@ -34,6 +34,9 @@ footer {
 
 #condition {
   font-size: 20px;
+}
+
+#condition::first-letter {
   text-transform: capitalize;
 }
 
