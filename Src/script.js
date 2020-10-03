@@ -19,6 +19,12 @@ function showDefaultWeather(response) {
   let condition = response.data.weather[0].description;
   let windSpeed = response.data.wind.speed;
   let humidity = response.data.main.humidity;
+  let icon = response.data.weather[0].icon;
+  let iconElement = document.querySelector("#main-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${icon}@2x.png`
+  );
   let temperatureElement = document.querySelector("#main-temperature");
   temperatureElement.innerHTML = temperature;
   let weatherElement = document.querySelector("#condition");
@@ -89,6 +95,12 @@ function showWeather(response) {
   let condition = response.data.weather[0].description;
   let windSpeed = response.data.wind.speed;
   let humidity = response.data.main.humidity;
+  let icon = response.data.weather[0].icon;
+  let iconElement = document.querySelector("#main-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${icon}@2x.png`
+  );
   let temperatureElement = document.querySelector("#main-temperature");
   temperatureElement.innerHTML = temperature;
   let weatherElement = document.querySelector("#condition");
