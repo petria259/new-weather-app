@@ -27,6 +27,29 @@ footer {
   max-width: 700px;
 }
 
+.date {
+  text-align: left;
+}
+
+.forecast {
+  text-align: center;
+}
+
+.small-icons {
+  margin-bottom: 15px;
+  width: 50px;
+}
+
+.subheader {
+  margin-top: 20px;
+}
+
+.weather {
+  font-size: 18px;
+  line-height: 30px;
+  margin-top: 36px;
+}
+
 #main-unit {
   font-size: 26px;
   font-weight: 500;
@@ -45,10 +68,6 @@ footer {
   font-weight: 500;
 }
 
-.date {
-  text-align: left;
-}
-
 #main-icon {
   width: 130px;
 }
@@ -56,19 +75,4 @@ footer {
 #main-temperature {
   font-size: 26px;
   font-weight: 500;
-}
-
-.small-icons {
-  margin-bottom: 15px;
-  width: 50px;
-}
-
-.subheader {
-  margin-top: 20px;
-}
-
-.weather {
-  font-size: 18px;
-  line-height: 30px;
-  margin-top: 36px;
 }

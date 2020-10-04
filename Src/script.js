@@ -136,57 +136,62 @@ function searchUserLocation(position) {
 
 function showForecast(response) {
   let forecastElement = document.querySelector("#forecast-row");
-  forecastElement.innerHTML = `<div class="col">
+  forecastElement.innerHTML = `<div class="col forecast">
   <h5>${new Date(response.data.daily[1].dt * 1000).toString().slice(0, 4)}</h5>
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
     response.data.daily[1].weather[0].icon
   }@2x.png" alt="small-icon"/>
-  <p>${response.data.daily[1].weather[0].main}</p>
-  <p>${Math.round(response.data.daily[1].temp.max)}-${Math.round(
+  <p><strong>${
+    response.data.daily[1].weather[0].main
+  }</strong> <br> ${Math.round(response.data.daily[1].temp.max)}-${Math.round(
     response.data.daily[1].temp.min
   )}°C</p>
   </div>
 
-  <div class="col">
+  <div class="col forecast">
   <h5>${new Date(response.data.daily[2].dt * 1000).toString().slice(0, 4)}</h5>
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
     response.data.daily[2].weather[0].icon
   }@2x.png" alt="small-icon"/>
-  <p>${response.data.daily[2].weather[0].main}</p>
-  <p>${Math.round(response.data.daily[2].temp.max)}-${Math.round(
+  <p><strong>${
+    response.data.daily[2].weather[0].main
+  }</strong> <br> ${Math.round(response.data.daily[2].temp.max)}-${Math.round(
     response.data.daily[2].temp.min
   )}°C</p>
   </div>
 
-  <div class="col">
+  <div class="col forecast">
   <h5>${new Date(response.data.daily[3].dt * 1000).toString().slice(0, 4)}</h5>
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
     response.data.daily[3].weather[0].icon
   }@2x.png" alt="small-icon"/>
-  <p>${response.data.daily[3].weather[0].main}</p>
-  <p>${Math.round(response.data.daily[3].temp.max)}-${Math.round(
+  <p><strong>${
+    response.data.daily[3].weather[0].main
+  }</strong> <br> ${Math.round(response.data.daily[3].temp.max)}-${Math.round(
     response.data.daily[3].temp.min
   )}°C</p>
   </div>
 
-  <div class="col">
+  <div class="col forecast">
   <h5>${new Date(response.data.daily[4].dt * 1000).toString().slice(0, 4)}</h5>
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
     response.data.daily[4].weather[0].icon
   }@2x.png" alt="small-icon"/>
-  <p>${response.data.daily[4].weather[0].main}</p>
-  <p>${Math.round(response.data.daily[4].temp.max)}-${Math.round(
+  <p><strong>${
+    response.data.daily[4].weather[0].main
+  }</strong> <br> ${Math.round(response.data.daily[4].temp.max)}-${Math.round(
     response.data.daily[4].temp.min
   )}°C</p>
   </div>
   
-  <div class="col">
+  <div class="col forecast">
   <h5>${new Date(response.data.daily[5].dt * 1000).toString().slice(0, 4)}</h5>
   <img class="small-icons" src="http://openweathermap.org/img/wn/${
     response.data.daily[5].weather[0].icon
   }@2x.png" alt="small-icon"/>
-  <p>${response.data.daily[5].weather[0].main}</p>
-  <p>${Math.round(response.data.daily[5].temp.max)}-${Math.round(
+  <p><strong>${
+    response.data.daily[5].weather[0].main
+  }</strong> <br> ${Math.round(response.data.daily[5].temp.max)}-${Math.round(
     response.data.daily[5].temp.min
   )}°C</p>
   </div>`;
