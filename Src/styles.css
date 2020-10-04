@@ -1,10 +1,10 @@
 a {
-  color: #000;
+  color: #063f75;
 }
 
 a:hover {
   color: #063f75;
-  font-weight: 800;
+  font-weight: 900;
   text-decoration: none;
 }
 
@@ -14,7 +14,7 @@ body {
 }
 
 footer {
-  font-size: 12px;
+  font-size: 14px;
   text-align: right;
 }
 
@@ -29,6 +29,10 @@ footer {
 
 .date {
   text-align: left;
+}
+
+.fa-linkedin {
+  font-size: 16px;
 }
 
 .forecast {
