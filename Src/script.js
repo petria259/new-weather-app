@@ -1,4 +1,4 @@
-//default location
+//default location at launch
 
 function searchDefaultLocation(response) {
   let apiKey = "ad7d1124d3ea1fdc032f2be9660dcda0";
@@ -48,7 +48,7 @@ function showWeather(response) {
   showDate(response.data.dt * 1000);
 }
 
-//display date and time
+//display last updated date and time
 
 function showDate(timestamp) {
   let now = new Date(timestamp);
