@@ -10,7 +10,7 @@ a:hover {
 
 body {
   font-family: "Comfortaa", cursive;
-  color: #26415b;
+  color: #063f75;
 }
 
 footer {
@@ -65,4 +65,10 @@ footer {
 
 .subheader {
   margin-top: 20px;
+}
+
+.weather {
+  font-size: 18px;
+  line-height: 30px;
+  margin-top: 36px;
 }

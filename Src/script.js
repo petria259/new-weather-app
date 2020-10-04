@@ -80,7 +80,7 @@ function showDate(timestamp) {
     minutes = `0${minutes}`;
   }
   let currentDate = document.querySelector("#date-and-time");
-  currentDate.innerHTML = `Last updated: <br> ${day}, ${date} ${month}, ${year} <br> ${hours}:${minutes}`;
+  currentDate.innerHTML = `Last updated: <br><strong> ${day}, ${date} ${month}, ${year} <br> ${hours}:${minutes}</strong>`;
 }
 
 //search new location
